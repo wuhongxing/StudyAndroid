@@ -44,6 +44,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        String[] test = {"a4", "b4", "c4"};
+        String temp = test[0];
+        for (int i = 1; i < test.length; i ++) {
+            if (temp.compareTo(test[i]) > 0) {
+                temp = test[i];
+            }
+        }
+
+        System.out.println(temp);
         setContentView(R.layout.activity_main);
         textview = (TextView)findViewById(R.id.edit_text);
 
