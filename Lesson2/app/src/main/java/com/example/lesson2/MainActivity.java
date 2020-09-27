@@ -2,6 +2,8 @@ package com.example.lesson2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Parcel;
@@ -27,6 +29,7 @@ import java.sql.Struct;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Observable;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -51,28 +54,41 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ObjectInputStream objectInputStream = null;
-        try {
-            objectInputStream = new ObjectInputStream(openFileInput(FILE_NAME));
-            Student student = (Student) objectInputStream.readObject();
-            System.out.println(student);
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        Runnable r = () -> System.out.println("test-----");
+        r.run();
+
+        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this, CustomActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
-
-        Score score = new Score(90, 95, 90);
-        Student student = new Student("xiao", 15, score);
-
-        try {
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(openFileOutput(FILE_NAME, MODE_PRIVATE));
-            objectOutputStream.writeObject(student);
-            objectOutputStream.flush();
-            objectOutputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        ObjectInputStream objectInputStream = null;
+//        try {
+//            objectInputStream = new ObjectInputStream(openFileInput(FILE_NAME));
+//            Student student = (Student) objectInputStream.readObject();
+//            System.out.println(student);
+//        } catch (IOException | ClassNotFoundException e) {
+//            e.printStackTrace();
+//        }
+//
+//
+//
+//        Score score = new Score(90, 95, 90);
+//        Student student = new Student("xiao", 15, score);
+//
+//        try {
+//            ObjectOutputStream objectOutputStream = new ObjectOutputStream(openFileOutput(FILE_NAME, MODE_PRIVATE));
+//            objectOutputStream.writeObject(student);
+//            objectOutputStream.flush();
+//            objectOutputStream.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 }
 
