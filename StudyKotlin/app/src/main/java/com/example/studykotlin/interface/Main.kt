@@ -6,81 +6,48 @@ import android.widget.TextView
 import org.w3c.dom.Text
 import kotlin.properties.Delegates
 
-fun main(args: Array<String>) {
-//    lateinit var name: String
-//    name = "1"
-//    val name1: String by lazy { println("123-"); "123" }
-//    val label: String by lazy {
-//        val label = ""
-//        label
-//    }
+class Calculator() {
+    var a: Int = 0
+    var b: Int = 0
+    fun add() = a + b
+    fun multiply() = a * b
+}
 
-//    var title: String by Delegates.observable("title_default") {
+fun main() {
+//    var a: String? = null
 //
+//    var number = 1
+//    run { number ++ }.run { number++ }
+//    println(number)
+
+    println((0 until 2).random())
+
+//    var calculator = Calculator()
+//    doCalculation(calculator)
+}
+
+fun doCalculation(calculator: Calculator) {
+//    val result =  calculator.run {
+//        a = 10
+//        b = 20
+//        add()
 //    }
+//    println(result)
 
-//    var price: Int by Delegates.vetoable(100, { property, oldValue, newValue ->
-//        if (newValue > 100) {
-//            Log.d("AAA", "属性变化：属性名：$property  旧值：$newValue > 100 不符合需求不能更改数据")
-//            false
-//        }
-//        return@vetoable true
-//    })
-
-//    var son = BigHeadSon()
-//    son.washing()
-//
-//    var father = SmallHeadFather()
-//    father.washing()
-//
-//    println(name)
-//    println(name1)
-//    println(name1)
-
-//    var test: String? = null
-//    test?.let {
-//        println(it)
-//        return@let "123"
-//    }
-//    with(test) {
-//        println(test?.length)
-//    }
-
-    val original = "abc"
-// 改变值并且传递到下一链条
-    original.let {
-        println("The original String is $it") // "abc"
-        it.reversed() // 改变参数并且传递到下一链条
-    }.let {
-        println("The reverse String is $it") // "cba"
-        it.length   // 改变类型
-    }.let {
-        println("The length of the String is $it") // 3
+    with(calculator) {
+        a = 10
+        b = 20
     }
 
-//    name.hehe()
-//
-//    name.afterMersure {
-//        this.reversed()
-//    }
-//    println(name)
-//
-//    name.afterMersure1 {
-//        name.reversed()
-//    }
-//
-//    println(name)
+    println(calculator.add())
 }
 
-fun <T: String>T.afterMersure(f: T.() -> Unit) {
-    f()
+fun large(num1: Int, num2: Int): Int {
+    return if (num1 > num2) {
+        num1
+    } else {
+        num2
+    }
 }
 
-fun <T: String>T.afterMersure1(f: () -> Unit) {
-    f()
-}
-
-
-private fun String.hehe() {
-    println(this + "hehe")
-}
+fun large1(num1: Int, num2: Int) = if (num1 > num2) num1 else num2

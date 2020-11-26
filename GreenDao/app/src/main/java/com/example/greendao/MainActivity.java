@@ -2,19 +2,18 @@ package com.example.greendao;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.DownloadManager;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
+
+import com.amitshekhar.DebugDB;
 
 import org.greenrobot.greendao.query.Query;
 
 import java.util.List;
 
-import greendao.greendao.BlogDao;
 import greendao.greendao.DaoMaster;
 import greendao.greendao.DaoSession;
-import greendao.greendao.UserDao;
 import greendao.greendao.UserInfoDao;
 
 public class MainActivity extends AppCompatActivity {
@@ -31,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         DaoSession daoSession = master.newSession();
         userInfoDao = daoSession.getUserInfoDao();
 
+        DebugDB.getAddressLog();
 //        insert();
 //        update();
 //        delete();
